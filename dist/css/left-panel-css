@@ -1,0 +1,80 @@
+.waiting{
+    color:white;
+    background-color:grey;
+}
+.ongoing{
+    color:white;
+    background-color:orange;
+}
+.finished{
+    color:white;
+    background-color:green;
+}
+.failed{
+    color:white;
+    background-color:red;
+}
+
+
+.taskTable{
+    width:100%;
+    position:absolute;
+    top:60px;
+    text-align:left;
+    font-size:14px;
+    border-collapse:collapse;
+}
+
+
+.taskTable input{
+    border:none;
+    max-width:100%;
+    width:100%;
+    padding:0;
+    margin:0;
+}
+.taskTable tr{
+    height:25px;
+}
+
+.taskTable td:nth-child(1), .taskTable th:nth-child(1){
+    width:35px;
+}
+
+
+
+.taskTable td:nth-child(2), .taskTable th:nth-child(2){
+    max-width:135px;
+    width:135px;
+
+}
+
+.taskTable td:nth-child(3), .taskTable th:nth-child(3){
+    width:55px;
+    max-width:55px;
+}
+
+
+.taskTable td:nth-child(4), .taskTable th:nth-child(4), 
+.taskTable td:nth-child(5), .taskTable th:nth-child(5){
+    width:110px;
+    max-width:110px;
+}
+
+.taskTable td:nth-child(6), .taskTable th:nth-child(6){
+    width:65px;
+    max-width:65px;
+}
+
+.taskTable td:nth-child(7), .taskTable th:nth-child(7){
+    width:150px;
+    max-width:150px;
+}
+.taskTable td:nth-child(8), .taskTable th:nth-child(8){
+    width:65px;
+    max-width:65px;
+}
+.taskTable td:nth-child(9), .taskTable th:nth-child(9){
+    width:65px;
+    max-width:65px;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Before / After Slider</title>
+
+<style>
+
+html, body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+}
+
+#container{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Alsó réteg */
+#back{
+    position:absolute;
+    inset:0;
+    background:#3b82f6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:50px;
+}
+
+/* Felső réteg */
+#front{
+    position:absolute;
+    inset:0;
+    background:#16a34a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:50px;
+
+    clip-path: inset(0 50% 0 0);
+}
+
+/* Vonal */
+#line{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:2px;
+    background:white;
+    transform:translateX(-1px);
+    pointer-events:none;
+}
+
+/* Fogantyú */
+#handle{
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    width:44px;
+    height:44px;
+
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:white;
+    border:3px solid #333;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    cursor:ew-resize;
+    user-select:none;
+    font-size:20px;
+    font-weight:bold;
+}
+
+
+#footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background-color:white;
+}
+
+
+</style>
+</head>
+
+<body>
+<div id="header">Fejléc</div>
+<div id="container">
+
+    <div id="back">
+        JOBB NÉZET
+    </div>
+
+    <div id="front">
+        BAL NÉZET
+    </div>
+
+    <div id="line"></div>
+
+    <div id="handle">↔</div>
+
+</div>
+
+<div id="footer">Lábléc</div>
+
+
+<script>
+
+const container = document.getElementById("container");
+const front = document.getElementById("front");
+const line = document.getElementById("line");
+const handle = document.getElementById("handle");
+
+let dragging = false;
+
+handle.addEventListener("mousedown", () => dragging = true);
+
+window.addEventListener("mouseup", () => dragging = false);
+
+window.addEventListener("mousemove", e => {
+
+    if(!dragging) return;
+
+    const rect = container.getBoundingClientRect();
+
+    let x = e.clientX - rect.left;
+
+    if(x < 0) x = 0;
+    if(x > rect.width) x = rect.width;
+
+    front.style.clipPath = `inset(0 ${rect.width - x}px 0 0)`;
+
+    line.style.left = x + "px";
+    handle.style.left = x + "px";
+
+});
+
+</script>
+
+</body>
+</html>
